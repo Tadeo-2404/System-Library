@@ -1,9 +1,11 @@
 import java.util.Scanner;
 import classes.Book;
+import classes.Member;
+import classes.Library;
 
 public class LibrarySystem {
     public static void main(String[] args) {
-        Book book = new Book("124", "book", "tadeo", "fiction", false);
+        Library library = new Library();
         System.out.println("Welcome to the System Library");
         System.out.println("1) Add Book");
         System.out.println("2) Register Member");
@@ -18,7 +20,6 @@ public class LibrarySystem {
         switch (option) {
             case 1: {
                 System.out.println("You choose option 'Add Book'");
-                System.out.println(book.getISBN());
                 break;
             }
             case 2: {

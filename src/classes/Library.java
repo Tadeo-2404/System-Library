@@ -30,7 +30,7 @@ public class Library {
         }
     }
     //set books
-    public void setBorrowedBooks(Book book) {
+    public void setBooks(Book book) {
         this.books.add(book);
     }
     //set members

@@ -23,6 +23,24 @@ public class Functions {
         library.setBooks(book);
     }
 
+    public static void searchLibraryBook() {
+        System.out.println("1) Search by ISBN");
+        System.out.println("2) Search by title");
+        System.out.println("3) Search by author");
+        System.out.println("4) Search by genre");
+        System.out.println("5) Search by availability");
+        int option = scan.nextInt();
+
+        switch (option) {
+            case 1: {
+                System.out.println("Search book by ISBN");
+                String ISBN = scan.nextLine();
+                library.searchBookByISBN(ISBN);
+                break;
+            }
+        }
+    }
+
     public static void showLibraryBooks() {
         library.getBooks();
     }

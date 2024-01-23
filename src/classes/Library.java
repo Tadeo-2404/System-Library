@@ -11,7 +11,6 @@ public class Library {
         this.books = new ArrayList<Book>();
         this.members = new ArrayList<Member>();
     }
-
     //get books
     public void getBooks() {
         for (Book book : books) {
@@ -40,10 +39,8 @@ public class Library {
     }
     //search book
     public Book searchBook(String ISBN) {
-        boolean found = false;
         for(Book book: books) {
-            if(book.getISBN() == ISBN) {
-                found = true;
+            if(book.getISBN().equals(ISBN)) {
                 return book;
             }
         }
@@ -53,7 +50,7 @@ public class Library {
     public void searchBookByISBN(String ISBN) {
         boolean found = false;
         for(Book book: books) {
-            if(book.getISBN() == ISBN) {
+            if(book.getISBN().equals(ISBN)) {
                 found = true;
                 System.out.println("ISBN: " + book.getISBN());
                 System.out.println("Title: " + book.getTitle());
@@ -71,7 +68,7 @@ public class Library {
     public void searchBooksByTitle(String title) {
         boolean found = false;
         for(Book book: books) {
-            if(book.getTitle() == title) {
+            if(book.getTitle().equals(title)) {
                 found = true;
                 System.out.println("ISBN: " + book.getISBN());
                 System.out.println("Title: " + book.getTitle());
@@ -89,7 +86,7 @@ public class Library {
     public void searchBooksByAuthor(String author) {
         boolean found = false;
         for(Book book: books) {
-            if(book.getAuthor() == author) {
+            if(book.getAuthor().equals(author)) {
                 found = true;
                 System.out.println("ISBN: " + book.getISBN());
                 System.out.println("Title: " + book.getTitle());
@@ -107,7 +104,7 @@ public class Library {
     public void searchBooksByGenre(String genre) {
         boolean found = false;
         for(Book book: books) {
-            if(book.getGenre() == genre) {
+            if(book.getGenre().equals(genre)) {
                 found = true;
                 System.out.println("ISBN: " + book.getISBN());
                 System.out.println("Title: " + book.getTitle());
@@ -136,7 +133,7 @@ public class Library {
         }
 
         if(!found) {
-            System.out.println("Book by available " + available + " not found");
+            System.out.println("Book by availability " + available + " not found");
         }
     }
     //edit book
@@ -151,36 +148,60 @@ public class Library {
             System.out.println("4) Edit availability");
             System.out.println("5) Exit");
             int option = scan.nextInt();
+            scan.nextLine();
 
             switch (option) {
                 case 1: {
                     System.out.println("Insert new title:");
                     String newTitle = scan.nextLine();
                     bookExist.setTitle(newTitle);
+                    System.out.println("Title updated to: " + bookExist.getTitle());
                     break;
                 }
                 case 2: {
                     System.out.println("Insert new author:");
                     String newAuthor = scan.nextLine();
                     bookExist.setAuthor(newAuthor);
+                    System.out.println("Author updated to: " + bookExist.getAuthor());
                     break;
                 }
                 case 3: {
                     System.out.println("Insert new genre:");
                     String newGenre = scan.nextLine();
                     bookExist.setGenre(newGenre);
+                    System.out.println("Genre updated to: " + bookExist.getGenre());
                     break;
                 }
                 case 4: {
                     System.out.println("Insert new availability:");
                     boolean newAvailability = scan.nextBoolean();
                     bookExist.setAvailable(newAvailability);
+                    System.out.println("Availability updated to: " + bookExist.getAvailable());
                     break;
                 }
                 case 5: {
                     break;
                 }
             }
+        } else {
+            System.out.println("Book with ISBN '" + ISBN + "' not found");
+            return;
+        }
+    }
+    //delete book
+    public void deleteBook(String ISBN) {
+        Book bookExist = searchBook(ISBN);
+
+        if (bookExist != null) {
+            boolean deleted = books.removeIf(book -> book.getISBN().equals(ISBN));
+
+            if (!deleted) {
+                System.out.println("Book with ISBN '" + ISBN + "' could not be deleted");
+            } else {
+                System.out.println("Book with ISBN '" + ISBN + "' deleted successfully");
+            }
+        } else {
+            System.out.println("Book with ISBN '" + ISBN + "' not found");
         }
     }
 }

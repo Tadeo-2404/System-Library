@@ -7,6 +7,8 @@ public class LibrarySystem {
         System.out.println("Welcome to the System Library");
         int option;
 
+        Scanner input = new Scanner(System.in);
+
         do {
             System.out.println("1) Add Book");
             System.out.println("2) Search Book");
@@ -22,9 +24,10 @@ public class LibrarySystem {
             System.out.println("12) Return Book");
             System.out.println("13) Display borrowed Books");
             System.out.println("0) Exit");
-            System.out.println("Select an option: ");
-            Scanner input = new Scanner(System.in);
+            System.out.print("Select an option: ");
+
             option = input.nextInt();
+            input.nextLine();
 
             switch (option) {
                 case 1: {
@@ -33,15 +36,18 @@ public class LibrarySystem {
                     break;
                 }
                 case 2: {
-                    System.out.println("You choose option 'Register Member'");
+                    System.out.println("You choose option 'Search Book'");
+                    functions.searchLibraryBook();
                     break;
                 }
                 case 3: {
-                    System.out.println("You choose option 'Borrow Book'");
+                    System.out.println("You choose option 'Edit Book'");
+                    functions.editLibraryBook();
                     break;
                 }
                 case 4: {
-                    System.out.println("You choose option 'Return Book'");
+                    System.out.println("You choose option 'Delete Book'");
+                    functions.deleteLibraryBook();
                     break;
                 }
                 case 5: {
@@ -55,5 +61,7 @@ public class LibrarySystem {
                 }
             }
         } while (option != 0);
+
+        input.close(); // Close the scanner outside the loop
     }
 }

@@ -142,4 +142,15 @@ public class Functions {
         String memberID = input.nextLine();
         library.editMember(memberID);
     }
+    //delete member
+    public static void deleteMember() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Insert ID of the member to delete: ");
+        String ID = input.nextLine();
+        library.deleteMember(ID);
+    }
+    //show all members
+    public static void showAllMembers() {
+        library.showAllMembers();
+    }
 }

@@ -70,6 +70,16 @@ public class LibrarySystem {
                     functions.editMember();
                     break;
                 }
+                case 9: {
+                    System.out.println("You choose option 'Delete Member'");
+                    functions.deleteMember();
+                    break;
+                }
+                case 10: {
+                    System.out.println("You choose option 'Display all Members'");
+                    functions.showAllMembers();
+                    break;
+                }
             }
         } while (option != 0);
 

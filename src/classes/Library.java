@@ -113,6 +113,30 @@ public class Library {
             }
         }
     }
+    //delete member
+    public void deleteMember(String memberId) {
+        Member memberExist = searchMember(memberId);
+
+        if (memberExist != null) {
+            boolean deleted = members.removeIf(member -> member.getMemberId().equals(memberId));
+
+            if (!deleted) {
+                System.out.println("Member with memberId '" + memberId + "' could not be deleted");
+            } else {
+                System.out.println("Member with memberId '" + memberId + "' deleted successfully");
+            }
+        } else {
+            System.out.println("Member with memberId '" + memberId + "' not found");
+        }
+    }
+    //show all members
+    public void showAllMembers() {
+        for(Member member: members) {
+            System.out.println("MemberID: " + member.getMemberId());
+            System.out.println("Name: " + member.getName());
+            System.out.println("BorrowedBooks: " + member.getAmountBorrowedBooks());
+        }
+    }
 
     //get books
     public void getBooks() {

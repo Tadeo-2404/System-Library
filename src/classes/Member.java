@@ -3,16 +3,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Member {
-    private int memberId;
+    private String memberId;
     private String name;
     private List<Book> borrowedBooks;
     //Constructor
-    public Member(int memberId, String name) {
+    public Member(String memberId, String name) {
         this.memberId = memberId;
         this.name = name;
     }
     //get memberId
-    public int getMemberId() {
+    public String getMemberId() {
         return memberId;
     }
     //get name
@@ -30,12 +30,20 @@ public class Member {
             System.out.println("Available: " + book.getAvailable());
         }
     }
+    //get amount borrowed books
+    public int getAmountBorrowedBooks() {
+        if(this.borrowedBooks != null) {
+            return this.borrowedBooks.size();
+        } else {
+            return 0;
+        }
+    }
     //set name
     public void setName(String name) {
         this.name = name;
     }
     //set member id
-    public void setMemberId(int memberId) {
+    public void setMemberId(String memberId) {
         this.memberId = memberId;
     }
     //set borrowed books

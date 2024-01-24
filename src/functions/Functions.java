@@ -1,5 +1,7 @@
 package functions;
 import java.util.Scanner;
+import java.util.UUID;
+
 import classes.Book;
 import classes.Library;
 
@@ -9,8 +11,7 @@ public class Functions {
 
     //add book function
     public static void addBook() {
-        System.out.println("Insert ISBN of the book");
-        String ISBN = scan.nextLine();
+        String ISBN = UUID.randomUUID().toString();
         System.out.println("Insert title of the book");
         String title = scan.nextLine();
         System.out.println("Insert author of the book");
@@ -96,5 +97,43 @@ public class Functions {
         System.out.println("Insert ISBN of the book to delete: ");
         String ISBN = input.nextLine();
         library.deleteBook(ISBN);
+    }
+
+    //register member
+    public static void registerMember() {
+        String memberId = UUID.randomUUID().toString();
+        Scanner input = new Scanner(System.in);
+        System.out.println("Insert member's name: ");
+        String name = input.nextLine();
+        library.registerMember(memberId, name);
+    }
+    //search member
+    public static void searchMember() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("1) Search member by memberID");
+        System.out.println("2) Search member by Name");
+        System.out.println("Select an option: ");
+        int option = input.nextInt();
+        input.nextLine();
+
+        switch (option) {
+            case 1: {
+                System.out.println("Search member by memberID");
+                System.out.println("Introduce member's ID to search: ");
+                String ID = input.nextLine();
+                library.searchMemberByID(ID);
+                break;
+            }
+            case 2: {
+                System.out.println("Search member by Name");
+                System.out.println("Introduce member's name to search: ");
+                String name = input.nextLine();
+                library.searchMemberByName(name);
+                break;
+            }
+            default: {
+                System.out.println("Invalid option, please try again");
+            }
+        }
     }
 }

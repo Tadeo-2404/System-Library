@@ -56,7 +56,13 @@ public class LibrarySystem {
                     break;
                 }
                 case 6: {
-                    System.out.println("You choose option 'Display borrowed Books'");
+                    System.out.println("You choose option 'Register Member'");
+                    functions.registerMember();
+                    break;
+                }
+                case 7: {
+                    System.out.println("You choose option 'Search Member'");
+                    functions.searchMember();
                     break;
                 }
             }

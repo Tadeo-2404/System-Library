@@ -2,6 +2,7 @@ package classes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Library {
     private List<Book> books;
@@ -11,6 +12,63 @@ public class Library {
         this.books = new ArrayList<Book>();
         this.members = new ArrayList<Member>();
     }
+
+    //get members
+    public void getMembers() {
+        for (Member member : members) {
+            System.out.println("ID: " + member.getMemberId());
+            System.out.println("Name: " + member.getName());
+            member.getBorrowedBooks();
+        }
+    }
+    //set members
+    public void setMembers(Member member) {
+        this.members.add(member);
+    }
+    //register member
+    public void registerMember(String memberId, String name) {
+        try {
+            Member member = new Member(memberId, name);
+            members.add(member);
+            System.out.println("Member added successfully");
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+    //search member by ID
+    public void searchMemberByID(String memberId) {
+        boolean found = false;
+        for(Member member: members) {
+            if(member.getMemberId().equals(memberId)) {
+                found = true;
+                System.out.println("MemberID: " + member.getMemberId());
+                System.out.println("Name: " + member.getName());
+                System.out.println("BorrowedBooks: " + member.getAmountBorrowedBooks());
+            }
+        }
+
+        if(!found) {
+            System.out.println("Member by ID " + memberId + " not found");
+        }
+    }
+    //search member by name
+    public void searchMemberByName(String name) {
+        boolean found = false;
+        for(Member member: members) {
+            if(member.getName().equals(name)) {
+                found = true;
+                System.out.println("MemberID: " + member.getMemberId());
+                System.out.println("Name: " + member.getName());
+                System.out.println("BorrowedBooks: " + member.getAmountBorrowedBooks());
+            }
+        }
+
+        if(!found) {
+            System.out.println("Member by name " + name + " not found");
+        }
+    }
+
     //get books
     public void getBooks() {
         for (Book book : books) {
@@ -21,21 +79,9 @@ public class Library {
             System.out.println("Available: " + book.getAvailable());
         }
     }
-    //get members
-    public void getMembers() {
-        for (Member member : members) {
-            System.out.println("ID: " + member.getMemberId());
-            System.out.println("Name: " + member.getName());
-            member.getBorrowedBooks();
-        }
-    }
     //set books
     public void setBooks(Book book) {
         this.books.add(book);
-    }
-    //set members
-    public void setMembers(Member member) {
-        this.members.add(member);
     }
     //search book
     public Book searchBook(String ISBN) {

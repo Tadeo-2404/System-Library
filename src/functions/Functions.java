@@ -98,7 +98,6 @@ public class Functions {
         String ISBN = input.nextLine();
         library.deleteBook(ISBN);
     }
-
     //register member
     public static void registerMember() {
         String memberId = UUID.randomUUID().toString();
@@ -135,5 +134,12 @@ public class Functions {
                 System.out.println("Invalid option, please try again");
             }
         }
+    }
+    //edit member
+    public static void editMember() {
+        System.out.println("Insert member's ID to edit: ");
+        Scanner input = new Scanner(System.in);
+        String memberID = input.nextLine();
+        library.editMember(memberID);
     }
 }

@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
 
+
 public class Library {
     private List<Book> books;
     private List<Member> members;
 
+    //Constructor
     public Library() {
         this.books = new ArrayList<Book>();
         this.members = new ArrayList<Member>();
@@ -35,6 +37,15 @@ public class Library {
         catch(Exception e) {
             System.out.println(e);
         }
+    }
+    //search member
+    public Member searchMember(String memberId) {
+        for(Member member: members) {
+            if(member.getMemberId().equals(memberId)) {
+                return member;
+            }
+        }
+        return null;
     }
     //search member by ID
     public void searchMemberByID(String memberId) {
@@ -66,6 +77,40 @@ public class Library {
 
         if(!found) {
             System.out.println("Member by name " + name + " not found");
+        }
+    }
+    //edit member
+    public void editMember(String memberId) {
+        Member memberExists = searchMember(memberId);
+        Scanner input = new Scanner(System.in);
+
+        if(memberExists == null) {
+            System.out.println("Member with ID '" + memberId + "' not found");
+            return;
+        }
+
+        System.out.println("1) Edit name");
+        System.out.println("2) Generate new ID");
+        System.out.println("Select an option: ");
+        int option = input.nextInt();
+        input.nextLine();
+
+        switch (option) {
+            case 1: {
+                System.out.println("Edit name");
+                System.out.println("Introduce new name: ");
+                String newName = input.nextLine();
+                memberExists.setName(newName);
+                System.out.println("Name changed successfully");
+                break;
+            }
+            case 2: {
+                System.out.println("Generate new ID");
+                String newID = UUID.randomUUID().toString();
+                memberExists.setName(newID);
+                System.out.println("ID changed successfully");
+                break;
+            }
         }
     }
 

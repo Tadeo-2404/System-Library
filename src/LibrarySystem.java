@@ -65,6 +65,11 @@ public class LibrarySystem {
                     functions.searchMember();
                     break;
                 }
+                case 8: {
+                    System.out.println("You choose option 'Edit Member'");
+                    functions.editMember();
+                    break;
+                }
             }
         } while (option != 0);
 

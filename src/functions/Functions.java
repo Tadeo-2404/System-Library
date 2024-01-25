@@ -153,4 +153,25 @@ public class Functions {
     public static void showAllMembers() {
         library.showAllMembers();
     }
+    //borrow book
+    public static void borrowLibraryBook() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Insert member's ID: ");
+        String ID = input.nextLine();
+        library.borrowBook(ID);
+    }
+    //return book
+    public static void returnLibraryBook() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Insert member's ID: ");
+        String ID = input.nextLine();
+        library.returnBook(ID);
+    }
+    //display borrowed books
+    public static void displayBorrowedBooks() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Insert member's ID: ");
+        String ID = input.nextLine();
+        library.displayBorrowedBook(ID);
+    }
 }

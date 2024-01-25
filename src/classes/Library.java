@@ -319,4 +319,84 @@ public class Library {
             System.out.println("Book with ISBN '" + ISBN + "' not found");
         }
     }
+    //borrow book
+    public void borrowBook(String ID) {
+        Member memberExist = searchMember(ID);
+        Scanner input = new Scanner(System.in);
+
+        //check if member exists
+        if(memberExist == null) {
+            System.out.println("Member with ID '" + ID + "'does not exist");
+            return;
+        }
+
+        //show books
+        getBooks();
+
+        //ask ISBN
+        System.out.println("Insert book's ISBN to borrow: ");
+        String ISBN = input.nextLine();
+
+        //check if book exists
+        Book bookExist = searchBook(ISBN);
+        if(bookExist == null) {
+            System.out.println("Book with ISBN '" + ISBN + "'does not exist");
+            return;
+        } else {
+            System.out.println("Book with ISBN '" + ISBN + "'found");
+            try {
+                memberExist.setBorrowedBooks(bookExist);
+                System.out.println("Book with ISBN '" + ISBN + "' borrowed successfully");
+            }
+            catch(Exception e) {
+                System.out.println(e);
+            }
+        }
+
+    }
+    //return book
+    public void returnBook(String ID) {
+        Member memberExist = searchMember(ID);
+        Scanner input = new Scanner(System.in);
+
+        //check if member exists
+        if(memberExist == null) {
+            System.out.println("Member with ID '" + ID + "'does not exist");
+            return;
+        }
+
+        //display borrowed book
+        memberExist.getBorrowedBooks();
+
+        //ask for ISBN to return
+        System.out.println("Insert book's ISBN to return: ");
+        String ISBNtoReturn = input.nextLine();
+
+        //check if ISBN exists
+        Book bookExist = searchBook(ISBNtoReturn);
+        if(bookExist == null) {
+            System.out.println("Book with ISBN '" + ISBNtoReturn + "'does not exist");
+            return;
+        }
+
+        //remove the book from member's borrowed list
+        try {
+            memberExist.deleteBorrowedBook(ISBNtoReturn);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    //display borrowed book
+    public void displayBorrowedBook(String ID) {
+        Member memberExist = searchMember(ID);
+
+        //check if member exists
+        if(memberExist == null) {
+            System.out.println("Member with ID '" + ID + "'does not exist");
+            return;
+        }
+
+        //display borrowed book
+        memberExist.getBorrowedBooks();
+    }
 }

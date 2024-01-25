@@ -80,6 +80,21 @@ public class LibrarySystem {
                     functions.showAllMembers();
                     break;
                 }
+                case 11: {
+                    System.out.println("You choose option 'Borrow book'");
+                    functions.borrowLibraryBook();
+                    break;
+                }
+                case 12: {
+                    System.out.println("You choose option 'Return book'");
+                    functions.returnLibraryBook();
+                    break;
+                }
+                case 13: {
+                    System.out.println("You choose option 'Display borrowed book'");
+                    functions.displayBorrowedBooks();
+                    break;
+                }
             }
         } while (option != 0);
 
